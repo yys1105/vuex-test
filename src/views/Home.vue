@@ -1,18 +1,26 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    home
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import { mapGetters, mapActions } from "vuex";
 export default {
-  name: 'home',
-  components: {
-    HelloWorld
+  name: "home",
+  components: {},
+  computed: {
+    ...mapGetters({
+      data: "user/data"
+    })
+  },
+  methods: {
+    ...mapActions({
+      getDatas: "user/getList"
+    })
+  },
+  created(){
+    this.getDatas()
   }
-}
+};
 </script>
